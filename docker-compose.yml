@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: accesscore-postgres
+    environment:
+      POSTGRES_DB: accesscore
+      POSTGRES_USER: accesscore
+      POSTGRES_PASSWORD: accesscore
+    ports:
+      - "5432:5432"
+    volumes:
+      - accesscore-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  accesscore-postgres-data:

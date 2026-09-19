@@ -1,4 +1,13 @@
+using AccessCore.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString =
+    builder.Configuration.GetConnectionString("Database");
+
+builder.Services.AddDbContext<AccessCoreDbContext>(options =>
+    options.UseNpgsql(connectionString));
 
 // Add services to the container.
 
