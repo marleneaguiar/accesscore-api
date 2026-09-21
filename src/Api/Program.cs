@@ -1,3 +1,8 @@
+using Application.Repositories;
+using Application.Security;
+using Application.UseCases.PersonalAccounts;
+using Infrastructure.Persistence.Repositories;
+using Infrastructure.Security;
 using AccessCore.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +13,10 @@ var connectionString =
 
 builder.Services.AddDbContext<AccessCoreDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+builder.Services.AddScoped<IPersonalAccountRepository, PersonalAccountRepository>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
+builder.Services.AddScoped<RegisterPersonalAccountUseCase>();
 
 // Add services to the container.
 

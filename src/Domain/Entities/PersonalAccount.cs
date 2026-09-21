@@ -12,10 +12,12 @@ namespace Domain.Entities
 
         public DateTimeOffset CreatedAt { get; private set; }
 
-        public PersonalAccount(string name, string email)
+        public PersonalAccount(string name, string email, string passwordHash, DateTimeOffset createdAt)
         {
-            this.Name = name;
-            this.Email = email;
+            Name = name;
+            Email = email;
+            PasswordHash = passwordHash;
+            CreatedAt = createdAt;
         }
 
     }
