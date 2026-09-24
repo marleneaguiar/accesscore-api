@@ -1,5 +1,5 @@
-using System.Threading.Tasks;
 using Application.DTOs.PersonalAccounts;
+using Application.Exceptions;
 using Application.Repositories;
 using Application.Security;
 using Domain.Entities;
@@ -25,9 +25,7 @@ namespace Application.UseCases.PersonalAccounts
 
             if (emailAlreadyExists)
             {
-                throw new InvalidOperationException(
-                    "A personal account with this email already exists."
-                );
+                throw new EmailAlreadyExistsException();
             }
 
             var passwordHash = _passwordHasher.Hash(request.Password);
